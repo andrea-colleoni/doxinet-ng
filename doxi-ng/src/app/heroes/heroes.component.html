@@ -1,6 +1,9 @@
 <app-hero-detail [hero]="selectedHero"></app-hero-detail>
 <button (click)="addHero()">Aggiungi</button>
-<button (click)="toggle()">Mostra/Nascondi</button>
+<button (click)="toggle()">
+  <span *ngIf="show">Nascondi</span>
+  <span *ngIf="!show">Mostra</span>
+</button>
 <ul class="heroes" *ngIf="show">
   <li *ngFor="let hero of heroes"
       [class.selected]="hero === selectedHero"
