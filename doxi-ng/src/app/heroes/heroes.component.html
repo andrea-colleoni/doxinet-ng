@@ -4,8 +4,10 @@
   <span *ngIf="show">Nascondi</span>
   <span *ngIf="!show">Mostra</span>
 </button>
+<button (click)="cambia1()">Nuovi eroi nel servizio</button>
+<button (click)="cambia2()">Vecchi eroi nel servizio</button>
 <ul class="heroes" *ngIf="show">
-  <li *ngFor="let hero of heroes"
+  <li *ngFor="let hero of heroes | async"
       [class.selected]="hero === selectedHero"
       (click)="selectHero(hero)">
       <span class="badge">{{hero.id}}</span> {{hero.name}}
