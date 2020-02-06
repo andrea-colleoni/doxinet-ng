@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -12,8 +11,10 @@ import { Observable } from 'rxjs';
 export class HeroesComponent implements OnInit {
 
   selectedHero: Hero;
-  heroes: Observable<Hero[]>;
+  heroes: Hero[];
+  filteredHeroes: Hero[];
   show: boolean;
+  search = '';
 
   constructor(
     public hs: HeroService
@@ -21,12 +22,13 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit() {
     // this.heroes = this.hs.getHeroesOld();
-    /*
-    this.hs.getHeroes().subscribe(h => {
+
+    this.hs.heroes.subscribe(h => {
         this.heroes = h;
+        this.filter();
     });
-    */
-    this.heroes = this.hs.heroes;
+
+    this.hs.vecchioArrayDiEroi();
     this.show = true;
   }
 
@@ -36,6 +38,13 @@ export class HeroesComponent implements OnInit {
 
   addHero() {
     // this.hs.addHero( {id: 21, name: 'Superman'} );
+  }
+
+  filter() {
+    console.log(this.search);
+    this.filteredHeroes =
+      this.heroes
+        .filter(h => this.search === '' || h.name.toLowerCase().indexOf(this.search.toLowerCase()) >= 0);
   }
 
   toggle() {
