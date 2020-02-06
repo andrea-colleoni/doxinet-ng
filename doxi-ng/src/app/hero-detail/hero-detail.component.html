@@ -1,13 +1,17 @@
-<h3>Dettagli eroe</h3>
-<button (click)="goBack()">Indietro</button>
-<button (click)="prossimo()">Prossimo</button>
-<div *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
+<p-card *ngIf="hero">
+  <p-header>
+    <h2>{{hero.name | uppercase}} Details</h2>
+  </p-header>
+  <div>
+    <span>id: </span>{{hero.id}}
+  </div>
   <div>
     <label>name:
       <input [(ngModel)]="hero.name" placeholder="name" />
     </label>
   </div>
-</div>
-
+  <p-footer>
+    <button (click)="goBack()" class="btn btn-secondary">Indietro</button>
+    <button (click)="prossimo()" class="btn btn-info">Prossimo</button>
+  </p-footer>
+</p-card>

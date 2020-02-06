@@ -8,6 +8,7 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TableModule } from 'primeng/table';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TableModule } from 'primeng/table';
     FormsModule,
     AppRoutingModule,
     TableModule,
+    CardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

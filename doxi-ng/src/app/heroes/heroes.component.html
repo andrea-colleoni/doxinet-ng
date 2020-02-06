@@ -1,22 +1,38 @@
-<button (click)="addHero()" class="btn btn-primary">Aggiungi</button>
-<button (click)="toggle()" class="btn btn-primary">
-  <span *ngIf="show">Nascondi</span>
-  <span *ngIf="!show">Mostra</span>
-</button><br>
-Ricerca: <input type="text" [(ngModel)]="search" (keyup)="filter()"><br>
-Stai cercando: <strong>{{ search | uppercase }}</strong>
-<p-table [value]="filteredHeroes" class="table table-striped" [paginator]="true" [rows]="5" [resizableColumns]="true">
+<p-card>
+  <p-header>
+    <h2>Azioni</h2>
+  </p-header>
+  <button (click)="addHero()" class="btn btn-primary">Aggiungi</button>
+  <button (click)="toggle()" class="btn btn-primary">
+    <span *ngIf="show">Nascondi</span>
+    <span *ngIf="!show">Mostra</span>
+  </button>
+</p-card>
+
+<p-card>
+  <p-header>
+    <h2>Ricerca</h2>
+  </p-header>
+  <input type="text" [(ngModel)]="search" (keyup)="filter()"><br>
+  Stai cercando: <strong>{{ search | uppercase }}</strong>
+</p-card>
+
+<p-table *ngIf="show"
+  [value]="filteredHeroes"
+  class="table table-striped"
+  [paginator]="true" [rows]="8" [resizableColumns]="true">
   <ng-template pTemplate="caption">
     Elenco di eroi
-</ng-template>
+  </ng-template>
   <ng-template pTemplate="header">
     <tr>
       <th>Id</th>
-      <th  [pSortableColumn]="name">Nome <p-sortIcon [field]="name" pResizableColumn></p-sortIcon></th>
+      <th [pSortableColumn]="name">Nome <p-sortIcon [field]="name"></p-sortIcon>
+      </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-hero>
-    <tr>
+    <tr (click)="selectHero(hero)" class="clickable">
       <td>{{hero.id}}</td>
       <td>{{hero.name}}</td>
     </tr>
