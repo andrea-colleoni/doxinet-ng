@@ -41,7 +41,6 @@ export class HeroesComponent implements OnInit {
   }
 
   filter() {
-    console.log(this.search);
     this.filteredHeroes =
       this.heroes
         .filter(h => this.search === '' || h.name.toLowerCase().indexOf(this.search.toLowerCase()) >= 0);

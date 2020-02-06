@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, of, Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
 
-  private heroesSubject = new Subject<Hero[]>();
+  private heroesSubject = new BehaviorSubject<Hero[]>(undefined);
 
   constructor() {
-  }
-  /*
-  getHeroesOld(): Hero[] {
-    return this.heroes;
+    this.vecchioArrayDiEroi();
   }
 
+  getHeroes(): Hero[] {
+    return this.heroesSubject.value;
+  }
+  /*
   addHero(hero: Hero) {
     this.heroes.push(hero);
   }
