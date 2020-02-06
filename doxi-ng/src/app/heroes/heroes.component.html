@@ -1,15 +1,24 @@
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>
-<button (click)="addHero()">Aggiungi</button>
-<button (click)="toggle()">
+<button (click)="addHero()" class="btn btn-primary">Aggiungi</button>
+<button (click)="toggle()" class="btn btn-primary">
   <span *ngIf="show">Nascondi</span>
   <span *ngIf="!show">Mostra</span>
 </button><br>
-<input type="text" [(ngModel)]="search" (keyup)="filter()">
-  Stai cercando: {{search}} <button (click)="filter()">Cerca</button>
-<ul class="heroes" *ngIf="show">
-  <li *ngFor="let hero of filteredHeroes"
-      [class.selected]="hero === selectedHero"
-      (click)="selectHero(hero)">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </li>
-</ul>
+Ricerca: <input type="text" [(ngModel)]="search" (keyup)="filter()"><br>
+Stai cercando: <strong>{{ search | uppercase }}</strong>
+<p-table [value]="filteredHeroes" class="table table-striped" [paginator]="true" [rows]="5" [resizableColumns]="true">
+  <ng-template pTemplate="caption">
+    Elenco di eroi
+</ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Id</th>
+      <th  [pSortableColumn]="name">Nome <p-sortIcon [field]="name" pResizableColumn></p-sortIcon></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-hero>
+    <tr>
+      <td>{{hero.id}}</td>
+      <td>{{hero.name}}</td>
+    </tr>
+  </ng-template>
+</p-table>

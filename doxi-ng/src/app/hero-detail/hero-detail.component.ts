@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 })
 export class HeroDetailComponent implements OnInit {
 
-  @Input() hero: Hero;
+  hero: Hero;
 
   constructor(
     private heroService: HeroService,

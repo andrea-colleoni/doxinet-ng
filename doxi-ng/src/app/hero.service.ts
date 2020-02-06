@@ -9,30 +9,34 @@ import { Observable, of, Subject, BehaviorSubject } from 'rxjs';
 export class HeroService {
 
   private heroesSubject = new BehaviorSubject<Hero[]>(undefined);
+  private heroes: Hero[];
 
   constructor() {
-    this.vecchioArrayDiEroi();
+    this.mockArray();
   }
 
   getHeroes(): Hero[] {
     return this.heroesSubject.value;
   }
-  /*
+
   addHero(hero: Hero) {
     this.heroes.push(hero);
+    this.notifyObservers();
   }
-  */
 
-  get heroes(): Observable<Hero[]> {
+  get observableHeroes(): Observable<Hero[]> {
     return this.heroesSubject.asObservable();
   }
 
-  nuovoArrayDiEroi() {
-    this.heroesSubject.next([{ id: 1000, name: 'Nuovo Eroe' }]);
+  newArray() {
+    this.heroes = [{ id: 1000, name: 'Nuovo Eroe' }];
+  }
+  mockArray() {
+    this.heroes = HEROES;
+    this.notifyObservers();
   }
 
-  vecchioArrayDiEroi() {
-    this.heroesSubject.next(HEROES);
+  private notifyObservers() {
+    this.heroesSubject.next(this.heroes);
   }
-
 }

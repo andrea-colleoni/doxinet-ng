@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,40 +11,38 @@ import { HeroService } from '../hero.service';
 })
 export class HeroesComponent implements OnInit {
 
-  selectedHero: Hero;
   heroes: Hero[];
   filteredHeroes: Hero[];
   show: boolean;
   search = '';
 
   constructor(
-    public hs: HeroService
+    public hs: HeroService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
-    // this.heroes = this.hs.getHeroesOld();
-
-    this.hs.heroes.subscribe(h => {
-        this.heroes = h;
-        this.filter();
+    this.hs.observableHeroes.subscribe(h => {
+      this.heroes = h;
+      this.filter();
     });
-
-    this.hs.vecchioArrayDiEroi();
     this.show = true;
   }
 
   selectHero(hero: Hero) {
-    this.selectedHero = hero;
+    this.router.navigate([`detail/${hero.id}`]);
   }
 
   addHero() {
-    // this.hs.addHero( {id: 21, name: 'Superman'} );
+    this.hs.addHero({ id: 21, name: 'Superman' });
   }
 
   filter() {
-    this.filteredHeroes =
-      this.heroes
-        .filter(h => this.search === '' || h.name.toLowerCase().indexOf(this.search.toLowerCase()) >= 0);
+    if (this.heroes) {
+      this.filteredHeroes =
+        this.heroes
+          .filter(h => this.search === '' || h.name.toLowerCase().indexOf(this.search.toLowerCase()) >= 0);
+    }
   }
 
   toggle() {
@@ -51,10 +50,10 @@ export class HeroesComponent implements OnInit {
   }
 
   cambia1() {
-    this.hs.nuovoArrayDiEroi();
+    this.hs.newArray();
   }
 
   cambia2() {
-    this.hs.vecchioArrayDiEroi();
+    this.hs.mockArray();
   }
 }
