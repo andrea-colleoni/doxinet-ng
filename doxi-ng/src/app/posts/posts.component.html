@@ -2,7 +2,7 @@
 <p-table #tt
 [value]="posts"
 class="table table-striped"
-[globalFilterFields]="['title','body']"
+[globalFilterFields]="['title','body', 'user.name']"
 [paginator]="true" [rows]="5">
 <ng-template pTemplate="caption">
   <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
@@ -14,6 +14,7 @@ class="table table-striped"
     <th>User Id</th>
     <th>Titolo</th>
     <th>Corpo</th>
+    <th>Autore</th>
   </tr>
 </ng-template>
 <ng-template pTemplate="body" let-post>
@@ -22,6 +23,7 @@ class="table table-striped"
     <td>{{post.userId}}</td>
     <td>{{post.title}}</td>
     <td>{{post.body}}</td>
+    <td>{{post.user.name}} ({{post.user.email}})</td>
   </tr>
 </ng-template>
 </p-table>
