@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CardModule } from 'primeng/card';
     AppRoutingModule,
     TableModule,
     CardModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
