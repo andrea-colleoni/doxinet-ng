@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { HttpClientModule } from '@angular/common/http';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeroesComponent,
     HeroDetailComponent,
     DashboardComponent,
+    PostsComponent,
   ],
   imports: [
     BrowserModule,
