@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../post';
 import { PostsService } from '../services/posts.service';
+import { faAlignCenter, faUser, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-posts',
@@ -10,6 +11,9 @@ import { PostsService } from '../services/posts.service';
 export class PostsComponent implements OnInit {
 
   posts: Post[];
+  faAlignCenter = faAlignCenter;
+  faUser = faUser;
+  faLocationArrow = faLocationArrow;
 
   constructor(
     private postService: PostsService,

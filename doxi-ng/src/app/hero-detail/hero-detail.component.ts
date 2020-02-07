@@ -18,7 +18,7 @@ export class HeroDetailComponent implements OnInit {
     private heroService: HeroService,
     private route: ActivatedRoute,
     private location: Location,
-    private rouetr: Router,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -37,7 +37,7 @@ export class HeroDetailComponent implements OnInit {
       .filter(h => h.id > this.hero.id)
       .map(h => h.id)
       .sort()[0];
-    this.rouetr.navigate([ `/detail/${nextId}` ]);
+    this.router.navigate([ `/detail/${nextId}` ]);
   }
 
 }

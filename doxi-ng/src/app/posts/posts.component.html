@@ -1,17 +1,16 @@
 
 <p-table #tt
 [value]="posts"
-class="table table-striped"
+class="table table-striped table-hover"
 [globalFilterFields]="['title','body', 'user.name']"
-[paginator]="true" [rows]="5">
+[paginator]="true" [rows]="8">
 <ng-template pTemplate="caption">
   <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
   <input type="text" pInputText size="50" placeholder="Cerca nei posts" (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
 </ng-template>
 <ng-template pTemplate="header">
   <tr>
-    <th>Id</th>
-    <th>User Id</th>
+    <th width="5%"><fa-icon [icon]="faLocationArrow"></fa-icon></th>
     <th>Titolo</th>
     <th>Corpo</th>
     <th>Autore</th>
@@ -19,11 +18,10 @@ class="table table-striped"
 </ng-template>
 <ng-template pTemplate="body" let-post>
   <tr>
-    <td>{{post.id}}</td>
-    <td>{{post.userId}}</td>
+    <td><a routerLink="/posts/{{post.id}}"><fa-icon [icon]="faAlignCenter"></fa-icon></a></td>
     <td>{{post.title}}</td>
     <td>{{post.body}}</td>
-    <td>{{post.user.name}} ({{post.user.email}})</td>
+    <td><a routerLink="/users/{{post.user.id}}"><fa-icon [icon]="faUser"></fa-icon></a> {{post.user.name}} ({{post.user.email}})</td>
   </tr>
 </ng-template>
 </p-table>

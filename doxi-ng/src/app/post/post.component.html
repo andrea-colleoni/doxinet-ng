@@ -1,0 +1,18 @@
+<p-card *ngIf="post">
+  <p-header>
+    <h2>{{post.title | uppercase}}</h2>
+  </p-header>
+  <div>
+    <span>id: </span>{{post.id}}
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Testo
+    </div>
+    <div class="col-6">
+      <strong>{{post.body}}</strong>
+    </div>
+  </div>
+</p-card>
+<h3>Commenti</h3>
+<app-comments [comments]="post?.comments"></app-comments>

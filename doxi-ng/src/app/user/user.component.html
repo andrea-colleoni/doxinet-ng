@@ -1,0 +1,66 @@
+<p-card *ngIf="user">
+  <p-header>
+    <h2>{{user.name | uppercase}}</h2>
+  </p-header>
+  <div>
+    <span>id: </span>{{user.id}}
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Nome
+    </div>
+    <div class="col-6">
+      <strong>{{user.name}}</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Username
+    </div>
+    <div class="col-6">
+      <strong>{{user.username}}</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      E-mail
+    </div>
+    <div class="col-6">
+      <strong>{{user.email}}</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Indirizzo
+    </div>
+    <div class="col-6">
+      <strong>{{user.address.street}}</strong> - <strong>{{user.address.city}}</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Telefono
+    </div>
+    <div class="col-6">
+      <strong>{{user.phone}}</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Sito web
+    </div>
+    <div class="col-6">
+      <strong>{{user.website}}</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Azienda
+    </div>
+    <div class="col-6">
+      <strong>{{user.company.name}}</strong>
+    </div>
+  </div>
+</p-card>
+<app-comments [comments]="user?.comments"></app-comments>
+<div #map style="width:100%;height:400px"></div>
